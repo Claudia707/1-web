@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claudia | Porfolio del Océano y el Arte</title>
+    <style>
+        /* Estética Premium inspirada en componentes de 21st.dev con temática marina */
+        :root {
+            --fondo-abisal: #030712;
+            --superficie-marina: #0b1528;
+            --fluido-neon: #06b6d4;
+            --coral-acento: #f43f5e;
+            --espuma-mar: #f3f4f6;
+            --agua-mutada: #9ca3af;
+            --borde-cristal: rgba(6, 182, 212, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--fondo-abisal);
+            color: var(--espuma-mar);
+            line-height: 1.6;
+            padding: 40px 20px;
+            background-image: radial-gradient(circle at 50% -20%, #0c2040 0%, var(--fondo-abisal) 70%);
+            background-attachment: fixed;
+        }
+
+        /* Contenedor Principal */
+        .contenedor-oceano {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Navegación / Cabecera */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(11, 21, 40, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--borde-cristal);
+            border-radius: 24px;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            background: linear-gradient(to right, #ffffff, var(--fluido-neon));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: var(--agua-mutada);
+            font-size: 1.2rem;
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Biografía estilo Tarjeta Dashboard */
+        .bitacora-sobre-mi {
+            background: var(--superficie-marina);
+            border: 1px solid var(--borde-cristal);
+            padding: 35px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bitacora-sobre-mi::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--fluido-neon);
+        }
+
+        .bitacora-sobre-mi h2 {
+            font-size: 1.5rem;
+            color: var(--fluido-neon);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Filtros Marinos */
+        .controlador-filtros {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .btn-sonar {
+            background: rgba(6, 182, 212, 0.05);
+            border: 1px solid var(--borde-cristal);
+            color: var(--espuma-mar);
+            padding: 10px 24px;
+            border-radius: 9999px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-sonar.activo, .btn-sonar:hover {
+            background: var(--fluido-neon);
+            color: var(--fondo-abisal);
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+            border-color: var(--fluido-neon);
+        }
+
+        /* Ecosistema de Tarjetas (Grid) */
+        .ecosistema-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .tarjeta-marina {
+            background: rgba(11, 21, 40, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tarjeta-marina:hover {
+            border-color: var(--borde-cristal);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .visor-visual {
+            height: 200px;
+            background: linear-gradient(135px, #0f172a 0%, #1e293b 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .visor-visual::after {
+            content: 'ILUSTRACIÓN CIENTÍFICA';
+            position: absolute;
+            bottom: 10px;
+            left: 15px;
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            color: var(--agua-mutada);
+        }
+
+        .contenido-marino {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .contenido-marino h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--espuma-mar);
+        }
+
+        .contenido-marino p {
+            color: var(--agua-mutada);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .etiqueta-marina {
+            align-self: flex-start;
+            background: rgba(6, 182, 212, 0.1);
+            color: var(--fluido-neon);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }
+
+        /* Consola de Hidrófono Interactiva */
+        .consola-hidrofono {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(6, 182, 212, 0.1);
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: auto;
+        }
+
+        .pulsor-sonar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--fluido-neon);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: var(--fondo-abisal);
+            transition: transform 0.2s ease;
+        }
+
+        .pulsor-sonar:active {
+            transform: scale(0.9);
+        }
+
+        .ondas-sonoras {
+            font-size: 0.8rem;
+            color: var(--agua-mutada);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            padding: 20px;
+            color: var(--agua-mutada);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contenedor-oceano">
+        
+        <header>
+            <h1>Claudia</h1>
+            <p>Exploradora Visual del Ecosistema Marino a través de las Artes Plásticas y la Acústica</p>
+        </header>
+
+        <section class="bitacora-sobre-mi">
+            <h2>🌊 Bitácora de Sinergia</h2>
+            <p>Tengo 19 años y entiendo el océano como un lienzo visual y un auditorio sonoro. Mi formación transita entre la expresividad de las artes plásticas, el análisis armónico de la música y la rigurosidad científica de la biología marina. Mi objetivo es diseñar experiencias de divulgación e ilustración que hagan visible lo invisible y audible lo profundo.</p>
+        </section>
+
+        <div class="controlador-filtros">
+            <button class="btn-sonar activo" onclick="filtrarEcosistema('todos')">Todo el Ecosistema</button>
+            <button class="btn-sonar" onclick="filtrarEcosistema('arte')">Artes Plásticas</button>
+            <button class="btn-sonar" onclick="filtrarEcosistema('musica')">Acústica & Música</button>
+            <button class="btn-sonar" onclick="filtrarEcosistema('ciencia')">Biología Marina</button>
+        </div>
+
+        <main class="ecosistema-grid" id="cuadrícula">
+            
+            <div class="tarjeta-marina" data-tipo="arte">
+                <div class="visor-visual">🎨</div>
+                <div class="contenido-marino">
+                    <span class="etiqueta-marina">Artes Plásticas</span>
+                    <h3>Cartografía Ilustrada del Laberinto Cetáceo</h3>
+                    <p>Láminas técnicas detalladas con acuarela y tinta que representan los sistemas óseos y musculares de los mamíferos marinos adaptados a las grandes presiones.</p>
+                </div>
+            </div>
+
+            <div class="tarjeta-marina" data-tipo="musica">
+                <div class="visor-visual" style="background: linear-gradient(135px, #1e1b4b 0%, #311042 100%);">🐋</div>
+                <div class="contenido-marino">
+                    <span class="etiqueta-marina">Música y Sonido</span>
+                    <h3>Sinfonía Abisal: Frecuencias de la Yubarta</h3>
+                    <p>Diseño de una pieza sonora ambiental utilizando grabaciones de hidrófonos modificadas digitalmente para simular el entorno acústico de las ballenas jorobadas.</p>
+                    <div class="consola-hidrofono">
+                        <button class="pulsor-sonar" onclick="activarHidrofono(this)">▶</button>
+                        <span class="ondas-sonoras">Conectar Canal de Audio (Simulación)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tarjeta-marina" data-tipo="ciencia">
+                <div class="visor-visual" style="background: linear-gradient(135px, #064e3b 0%, #022c22 100%);">🐬</div>
+                <div class="contenido-marino">
+                    <span class="etiqueta-marina">Biología Marina</span>
+                    <h3>Impacto Acústico en el Delfín Listado</h3>
+                    <p>Proyecto de investigación teórica que analiza cómo el ruido de los motores afecta a los silbidos de firma y ecolocalización de las comunidades locales de delfines.</p>
+                </div>
+            </div>
+
+        </main>
+
+        <footer>
+            <p>Plataforma Digital de Claudia • Conectando Ciencia y Creatividad • 2026</p>
+        </footer>
+
+    </div>
+
+    <script>
+        function filtrarEcosistema(categoria) {
+            // Manejo de clases activas en los botones
+            const botones = document.querySelectorAll('.btn-sonar');
+            botones.forEach(btn => btn.classList.remove('activo'));
+            event.target.classList.add('activo');
+
+            // Lógica de filtrado de elementos
+            const tarjetas = document.querySelectorAll('.tarjeta-marina');
+            tarjetas.forEach(tarjeta => {
+                const tipo = tarjeta.getAttribute('data-tipo');
+                if (categoria === 'todos' || tipo === categoria) {
+                    tarjeta.style.display = 'flex';
+                    tarjeta.style.opacity = '0';
+                    setTimeout(() => {
+                        tarjeta.style.opacity = '1';
+                    }, 50);
+                } else {
+                    tarjeta.style.display = 'none';
+                }
+            });
+        }
+
+        function activarHidrofono(boton) {
+            const texto = boton.nextElementSibling;
+            if (boton.innerText === "▶") {
+                boton.innerText = "⏸";
+                boton.style.background = "var(--coral-acento)";
+                texto.innerText = "Sintonizando frecuencias submarinas...";
+                texto.style.color = "var(--coral-acento)";
+            } else {
+                boton.innerText = "▶";
+                boton.style.background = "var(--fluido-neon)";
+                texto.innerText = "Canal de audio en pausa";
+                texto.style.color = "var(--agua-mutada)";
+            }
+        }
+    </script>
+</body>
+</html>
